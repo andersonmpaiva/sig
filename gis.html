@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="http://openlayers.org/en/latest/examples/resources/prism/prism.css" type="text/css">
+    <link rel="stylesheet" href="https://openlayers.org/en/v3.20.1/css/ol.css" type="text/css">
+    <link rel="stylesheet" href="http://openlayers.org/en/latest/examples/resources/layout.css" type="text/css">
+    
+    
+    <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=fetch,requestAnimationFrame,Element.prototype.classList,URL"></script>
+    <script src="ZeroClipboard.min.js"></script>
+    <script src="https://openlayers.org/en/v3.20.1/build/ol.js" type="text/javascript"></script>
+    <script src='http://api.tiles.mapbox.com/mapbox.js/plugins/turf/v2.0.0/turf.min.js'></script>
+
+
+    <style>
+      .ol-popup {
+        position: absolute;
+        background-color: white;
+        -webkit-filter: drop-shadow(0 1px 4px rgba(0,0,0,0.2));
+        filter: drop-shadow(0 1px 4px rgba(0,0,0,0.2));
+        padding: 15px;
+        border-radius: 10px;
+        border: 1px solid  #FF9800;
+        bottom: 12px;
+        left: -50px;
+        min-width: 280px;
+      }
+      .ol-popup:after, .ol-popup:before {
+        top: 100%;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+      }
+      .ol-popup:after {
+        border-top-color: #FF9800;
+        border-width: 10px;
+        left: 48px;
+        margin-left: -10px;
+      }
+      .ol-popup:before {
+        border-top-color: #ccccc;
+        border-width: 11px;
+        left: 48px;
+        margin-left: -11px;
+      }
+      .ol-popup-closer {
+        text-decoration: none;
+        position: absolute;
+        top: 2px;
+        right: 8px;
+      }
+      .ol-popup-closer:after {
+        content: "✖";
+      }
+    </style>
+    <title>Trabalho Final de SIG</title>
+  </head>
+  <body>
+
+    <header class="navbar" role="navigation">
+      <div class="container">
+        <div class="display-table pull-left" id="navbar-logo-container">
+          <a class="navbar-brand" href="./"><img src="earth.ico">&nbsp;Trabalho Final de SIG - 2016.2</a>
+        </div>
+      </div>
+    </header>
+
+    <div class="container-fluid">
+
+
+      <div class="row-fluid">
+        <div class="span12">
+          <h4 id="title"></h4>
+          <div id="map" class="map"></div>
+          <div id="popup" class="ol-popup">
+      <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+      <div id="popup-content"></div>
+    </div>
+
+<form id="options-form" automplete="off">
+      <div class="radio">
+        <label>
+          <input type="radio" name="interaction" value="draw" id="draw" checked>
+          Desenhar geometria&nbsp;
+        </label>
+      </div>
+      <div class="radio">
+        <label>
+          <input type="radio" name="interaction" value="modify">
+          Clicar / Modificar geometria&nbsp;
+        </label>
+      </div>
+      <div class="radio">
+        <label>
+          <input type="radio" name="interaction" value="heatmap">
+          Gerar mapa de calor &nbsp;
+        </label>
+      </div>
+      <div class="form-group">
+        <label>Geometria &nbsp;</label>
+        <select name="draw-type" id="draw-type">
+          <option value="Point">Ponto</option>
+          <option value="LineString">Linha</option>
+          <option value="Polygon">Polígono</option>
+        </select>
+      </div>
+    </form>
+
+  <div class="form-group">
+  <label for="comment">Consulta SQL:</label>
+  <textarea class="form-control" rows="5" id="comment"></textarea>
+  <button onclick="window.alert('Não foi implementado :(')">Clique aqui</button>
+  </div>
+        </div>
+      </div>
+
+    </div>
+
+    <script src="common.js"></script>
+    <script src="gis.js"></script>
+
+
+  
+  </body>
+</html>
